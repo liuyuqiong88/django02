@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            var $add = $('#add'),$sub = $('#sub'),$num = $('#num'), $submit = $('#submit'),$goods_1 = $("#goods_1");
+
+            $add.click(function () {
+                $num.html(parseInt($num.html())+1)
+            })
+            $sub.click(function () {
+                $num.html(parseInt($num.html())-1)
+            })
+            $submit.click(function () {
+                $(this).active('submit_car/'+$goods_1.html()+'/'+$num.html())
+            })
+
+
+        })
+
+    </script>
+</head>
+<body>
+
+
+    <h3>购物车</h3>
+
+    <form action="submit_car">
+{#        {% csrf_token %}#}
+<div>
+    <a href="#" id="goods_1" name="goods_1">商品一</a>
+    <input type="button" value="+" id="add">
+
+    <span id="num" name="num"> 1 </span>
+    <input type="button" value="-"c id="sub">
+
+</div>
+
+<div>
+    <input type="submit" value="提交" id="submit" >
+
+</div>
+</form>
+</body>
+</html>
